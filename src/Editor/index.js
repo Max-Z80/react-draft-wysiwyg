@@ -234,12 +234,14 @@ export default class WysiwygEditor extends Component {
   onChange: Function = (editorState: Object): void => {
     const { readOnly, onEditorStateChange } = this.props;
     if (
-      !readOnly &&
-      !(
-        getSelectedBlocksType(editorState) === "atomic" &&
-        editorState.getSelection().isCollapsed
-      )
-    ) {
+        /* removed by Max to solve image click issue
+        !readOnly &&
+        !(
+          getSelectedBlocksType(editorState) === "atomic" &&
+          editorState.getSelection().isCollapsed
+        )*/
+        !readOnly
+      ) {
       if (onEditorStateChange) {
         onEditorStateChange(editorState, this.props.wrapperId);
       }
